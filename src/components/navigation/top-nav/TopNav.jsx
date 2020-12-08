@@ -3,7 +3,7 @@ import React from 'react';
 function TopNav() {
     return (
         <div className="top-nav-bar bg-white">
-                <header className=" py-4 pt-2 flex flex-row items-center justify-between align-middle mx-6">                                   
+                <header className="py-4 pt-2 flex flex-row items-center justify-between align-middle mx-6">                                   
                     <div>                        
                         <div>
                             <div className="text-2xl mb-2"> Welcome to 

@@ -1,3 +1,4 @@
+import DashBody from './components/dashbody/dashbody';
 import SideMenu from './components/navigation/side-nav/SideMenu';
 import TopNav from './components/navigation/top-nav/TopNav';
 import './styles/main.css';
@@ -9,6 +10,7 @@ function App() {
       <SideMenu />
       <div className=" flex-grow">
         <TopNav/>
+        <DashBody/>
       </div>
       
     </div>
