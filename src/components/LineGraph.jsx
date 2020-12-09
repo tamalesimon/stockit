@@ -29,7 +29,7 @@ function LineGraph() {
                             <div className="w-3 h-3 bg-green-500 rounded mr-2"></div>
                             <div className="text-xs text-gray-400">Return Value</div>
                         </div>
-                        <div className="p-1 ml-2 bg-gray-200 bg-opacity-50 rounded-md">
+                        <div className="p-1 ml-2 bg-gray-200 bg-opacity-50 rounded-md cursor-pointer">
                             <svg className="opacity-50 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" width="24" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
