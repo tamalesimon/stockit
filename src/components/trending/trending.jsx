@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TrendingDataRow from './trendingDataRow';
+import TrendingDataRow from '../trending/trendingDataRow';
+
 
 const BASE_URL = 'https://finnhub.io/api/v1/quote/';
 const API_KEY = 'bv6lqiv48v6s9eue59e0';
@@ -8,17 +9,45 @@ const API_KEY = 'bv6lqiv48v6s9eue59e0';
 function Trending() {
 
     const [trendingData, settrendingData] = useState([]);
+    const [yourProfile, setYourProfileData] = useState([]);
 
+    //Your Profile Data
+    const getMyStocks = () => {
+
+        db.collection('myStocks')
+        .onSnapshot(snapshot => {
+            let promises = [];
+            let tempData = []
+            snapshot.docs.map((doc) => {
+                promises.push(getStockData(doc.data().ticker)
+                .then(res => {
+                    tempData.push({
+                        id: doc.id,
+                        data: doc.data(),
+                        info: res.data
+                    });
+                })
+                );
+            });
+
+            Promise.all(promises).then(() => {
+                setYourProfileData(tempData);
+            });
+        });
+    };
+
+    //trending data
     const getStockData = (stock) => {
-       return axios.get(`${BASE_URL}?symbol=${stock}&token=${API_KEY}`)
+       return axios
+       .get(`${BASE_URL}?symbol=${stock}&token=${API_KEY}`)
        .catch((error) => {
            console.error("Error" , error.message);
        });
     };
 
     useEffect(() => {
-        let tempStockData = []
-        const stockList = ["AAPL", "UBER", "MSFT", "SPOT", "AIG", "AMZN", "EUR", "GB"]
+        let tempStockData = [];
+        const stockList = ["AAPL", "UBER", "MSFT", "SPOT", "AIG", "AMZN", "SBUX", "FB"]
         let promises = [];
 
         stockList.map((stock) => {
