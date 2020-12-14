@@ -16,7 +16,7 @@ import MSFT from '../../'; */
 
 function YourPortfolio(props) { 
 
-    /* const images = require.context('../../../public/assets/', true); */
+    /* const images = require('../../assets'+ props.icon + '.png', true);  */
 
     const percentage = ((props.price- props.openPrice)/props.openPrice)*100;
     console.log(props.icon);
@@ -25,7 +25,7 @@ function YourPortfolio(props) {
             <div style={{ width:"800px"}} className="flex items-center justify-between py-4 px-6 border-2 border-solid border-opacity-75 border-gray-200 rounded-lg">
                 
                 <div className="flex flex-row items-center">
-                    <img src={`public/assets/${props.icon}.png`} alt="" className=" w-16 rounded-md shadow-xl opacity-70" />
+                    <img src={require(`../../assets/${props.icon}.png`).default} alt="" className=" w-16 rounded-md opacity-70" />
                     <div className="ml-8">
                         <h2 className="text-sm font-bold text-gray-800">{props.name}</h2>
                         <p className="text-sm font-sans text-gray-400">{props.industry}</p>

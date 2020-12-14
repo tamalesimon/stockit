@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import  axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { db } from '../../firebase';
 
 import LineGraph from '../LineGraph';
 import TrendingDataRow from '../trending/trendingDataRow';
 import YourPortfolio from '../yourPortfolio/YourPortfolio';
+import PieInfo from '../PieChart';
 
 
 /* import Trending from '../trending/trending';
@@ -23,53 +24,53 @@ function DashBody() {
     const getMyStocks = () => {
 
         db.collection('myStocks')
-        .onSnapshot(snapshot => {
-            let promises = [];
-            let tempData = [];
-            snapshot.docs.map((doc) => {
-                promises.push(getStockData(doc.data().ticker)
-                .then(res => {
-                    tempData.push({
-                        id: doc.id,
-                        data: doc.data(),
-                        info: res.data
-                    });
-                })
-                );
-            });
+            .onSnapshot(snapshot => {
+                let promises = [];
+                let tempData = [];
+                snapshot.docs.map((doc) => {
+                    promises.push(getStockData(doc.data().ticker)
+                        .then(res => {
+                            tempData.push({
+                                id: doc.id,
+                                data: doc.data(),
+                                info: res.data
+                            });
+                        })
+                    );
+                });
 
-            Promise.all(promises).then(() => {
-                console.log(tempData);
-                setYourProfileData(tempData);
-                
+                Promise.all(promises).then(() => {
+                    console.log(tempData);
+                    setYourProfileData(tempData);
+
+                });
             });
-        });
     };
 
     //trending data
     const getStockData = (stock) => {
-       return axios
-       .get(`${BASE_URL}?symbol=${stock}&token=${API_KEY}`)
-       .catch((error) => {
-           console.error("Error" , error.message);
-       });
+        return axios
+            .get(`${BASE_URL}?symbol=${stock}&token=${API_KEY}`)
+            .catch((error) => {
+                console.error("Error", error.message);
+            });
     };
 
     useEffect(() => {
         let tempStockData = [];
         const stockList = ["AAPL", "UBER", "MSFT", "SPOT", "AIG", "AMZN", "SBUX", "FB"]
         let promises = [];
-        
+
         getMyStocks();
         stockList.map((stock) => {
             promises.push(
                 getStockData(stock)
-                .then((res) => {
-                    tempStockData.push({
-                        name: stock,
-                        ...res.data
-                    });
-                })
+                    .then((res) => {
+                        tempStockData.push({
+                            name: stock,
+                            ...res.data
+                        });
+                    })
             );
         });
 
@@ -89,7 +90,7 @@ function DashBody() {
                         <LineGraph />
                     </div>
                 </div>
-                <div style={{width: "100%"}} className="ml-8">
+                <div style={{ width: "100%" }} className="ml-8">
 
                     <div>
                         <div className="flex justify-between mb-4">
@@ -125,20 +126,30 @@ function DashBody() {
 
                 </div>
             </div>
-            <div className="mt-6 ml-3">
-                <h2 className="mx-2 mb-4 text-gray-600 font-bold text-base">Your Portfolio</h2>
-                {yourProfile.map((stock) => (
+            <div className="mt-6 ml-3 flex flex-row">
+                <div>
+                    <div style={{ width: "800px" }} className="flex flex-row justify-between">
+                        <h2 className="mx-2 mb-4 text-gray-600 font-bold text-base">Your Portfolio</h2>
+                        <a className=" text-green-500" href="http://">View all</a>
+                    </div>
+                    {yourProfile.map((stock) => (
                         <YourPortfolio
-                        key={stock.data.ticker}
-                        icon={stock.data.ticker}
-                        name={stock.data.ticker}
-                        industry={stock.data.industry}
-                        investmentValue={stock.data.investmentValue}
-                        openPrice={stock.info.o}
-                        price={stock.info.c}/>
-                ))
-                }
-                
+                            key={stock.data.ticker}
+                            icon={stock.data.ticker}
+                            name={stock.data.ticker}
+                            industry={stock.data.industry}
+                            investmentValue={stock.data.investmentValue}
+                            openPrice={stock.info.o}
+                            price={stock.info.c} />
+                    ))
+                    }
+                </div>
+
+                {/* pie graph here */}
+                <div className="mx-4">
+                    <h2 className="mx-2 mb-4 text-gray-600 font-bold text-base"> Portfolio statistics</h2>
+                    <PieInfo />
+                </div>
             </div>
         </main>
     )
