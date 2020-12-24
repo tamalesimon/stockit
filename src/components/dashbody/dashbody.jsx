@@ -7,6 +7,7 @@ import LineGraph from '../LineGraph';
 import TrendingDataRow from '../trending/trendingDataRow';
 import YourPortfolio from '../yourPortfolio/YourPortfolio';
 import PieInfo from '../PieChart';
+import BarGraph from '../BarGraph';
 
 
 /* import Trending from '../trending/trending';
@@ -147,8 +148,10 @@ function DashBody() {
 
                 {/* pie graph here */}
                 <div className="mx-4">
-                    <h2 className="mx-2 mb-4 text-gray-600 font-bold text-base"> Portfolio statistics</h2>
-                    <PieInfo />
+                    <h2 className="mx-2 text-gray-600 font-bold text-base"> Portfolio statistics</h2>
+                    <div className="pt-28 align-middle">
+                        <BarGraph />
+                    </div>                    
                 </div>
             </div>
         </main>
