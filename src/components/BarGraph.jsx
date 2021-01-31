@@ -7,7 +7,7 @@ function BarGraph() {
         labels: ['SBUX', 'FB', 'AMZN'],
         datasets: [
           {
-            label: '# of Votes',
+            label: 'stock #',
             data: [1500.65, 3200.75, 2300.2],
             backgroundColor: [
               'rgb(77,155,123)',

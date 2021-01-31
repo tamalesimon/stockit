@@ -87,7 +87,7 @@ function DashBody() {
             <div className="flex">
                 <div>
                     <h2 className="mx-2 text-gray-600 font-bold text-base">Portfolio Summary</h2>
-                    <div>
+                    <div style={{width: '800px'}}>
                         <LineGraph />
                     </div>
                 </div>

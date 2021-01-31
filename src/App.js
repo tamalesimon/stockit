@@ -10,7 +10,7 @@ function App() {
       <SideMenu />
       <div className=" flex-grow">
         <TopNav/>
-        <DashBody/>
+        <DashBody/> 
       </div>
       
     </div>

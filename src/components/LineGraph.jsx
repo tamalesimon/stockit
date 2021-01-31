@@ -37,9 +37,7 @@ function LineGraph() {
                     </div>                   
                 </div>
             </div>
-            <div className="mt-4" style={{
-                width:"800px",
-            }}>
+            <div className="mt-4" >
                 <Line
                     data = {{
                         labels:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
