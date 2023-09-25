@@ -3,8 +3,8 @@ import axios from 'axios';
 import TrendingDataRow from '../trending/trendingDataRow';
 
 
-const BASE_URL = 'https://finnhub.io/api/v1/quote/';
-const API_KEY = 'bv6lqiv48v6s9eue59e0';
+/* const BASE_URL = 'https://finnhub.io/api/v1/quote/';
+const API_KEY = 'bv6lqiv48v6s9eue59e0'; */
 
 function Trending() {
 
@@ -39,7 +39,7 @@ function Trending() {
     //trending data
     const getStockData = (stock) => {
        return axios
-       .get(`${BASE_URL}?symbol=${stock}&token=${API_KEY}`)
+       .get(`${process.env.REACT_APP_BASEURL}?symbol=${stock}&token=${process.env.REACT_APP_KEY}`)
        .catch((error) => {
            console.error("Error" , error.message);
        });

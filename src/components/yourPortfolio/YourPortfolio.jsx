@@ -29,7 +29,7 @@ function YourPortfolio(props) {
                     <div className="ml-8">
                         <h2 className="text-sm font-bold text-gray-800">{props.name}</h2>
                         <p className="text-sm font-sans text-gray-400">{props.industry}</p>
-                    </div>                    
+                    </div>                 
                 </div>
                 <div className="flex flex-row">
                     <div className="text-right mr-10">

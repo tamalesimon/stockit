@@ -14,7 +14,7 @@ import BarGraph from '../BarGraph';
 import YourPortfolio from '../yourPortfolio/YourPortfolio'; */
 
 const BASE_URL = 'https://finnhub.io/api/v1/quote/';
-const API_KEY = 'bv6lqiv48v6s9eue59e0';
+const API_KEY = 'ck8tgi9r01qslniclgp0ck8tgi9r01qslniclgpg';
 
 function DashBody() {
 
@@ -151,7 +151,7 @@ function DashBody() {
                     <h2 className="mx-2 text-gray-600 font-bold text-base"> Portfolio statistics</h2>
                     <div className="pt-28 align-middle">
                         <BarGraph />
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </main>
